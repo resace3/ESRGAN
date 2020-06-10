@@ -23,5 +23,5 @@ You can interpolate the RRDB_ESRGAN and RRDB_PSNR models with alpha in [0, 1].
 2. Run `python test.py models/interp_08.pth`, where *models/interp_08.pth* is the model path.
 
 <p align="center">
-  <img height="400" src="figures/43074.gif">
+  <img height="400" src="figures/png_to_gif.gif">
 </p>
