@@ -4,10 +4,16 @@ import cv2
 import numpy as np
 import torch
 import RRDBNet_arch as arch
+import os 
+
+if os.environ.get('ALPHA') is None:
+    alpha='1'
+else:
+    alpha = os.getenv('ALPHA')
 
 model_path = 'models/RRDB_ESRGAN_x4.pth'  # models/RRDB_ESRGAN_x4.pth OR models/RRDB_PSNR_x4.pth
-device = torch.device('cuda')  # if you want to run on CPU, change 'cuda' -> cpu
-# device = torch.device('cpu')
+#device = torch.device('cuda')  # if you want to run on CPU, change 'cuda' -> cpu
+device = torch.device('cpu')
 
 test_img_folder = 'LR/*'
 
@@ -34,4 +40,5 @@ for path in glob.glob(test_img_folder):
         output = model(img_LR).data.squeeze().float().cpu().clamp_(0, 1).numpy()
     output = np.transpose(output[[2, 1, 0], :, :], (1, 2, 0))
     output = (output * 255.0).round()
-    cv2.imwrite('results/{:s}_rlt.png'.format(base), output)
+    print('results/'+base+'_'+alpha[-1]+'.png')
+    cv2.imwrite('results/'+base+'_'+alpha[-1]+'.png', output)

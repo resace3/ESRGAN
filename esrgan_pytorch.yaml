@@ -1,0 +1,27 @@
+apiVersion: batch/v1
+kind: Job
+metadata:
+  name: nrezaee-esrgan-pytorch
+spec:
+  template:
+    metadata:
+      labels:
+        app: nrezaee-esrgan-pytorch
+    spec:
+      restartPolicy: Never
+      containers:
+      - name: nrezaee-esrgan-pytorch
+        image: nrezaee/esrgan_pytorch:latest
+        imagePullPolicy: Always
+        resources:
+          requests: 
+            cpu: "32"
+            memory: "10Gi"
+          limits:
+            nvidia.com/gpu: 2
+            cpu: "32"
+            memory: "30Gi"
+        command: ["/bin/bash", "-c" ]
+        args:
+          - sleep 1d
+         
