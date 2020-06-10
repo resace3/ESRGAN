@@ -1,6 +1,6 @@
 # Dockerizing
 
-I am currently working on Dockerizing this technique for super resolution.
+I am currently working on Dockerizing this super resolution technique.
 
 
 
